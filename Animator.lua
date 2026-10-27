@@ -148,17 +148,8 @@ function Animator.playTrack(a, track, fadein, maxWeight)
 	if idx then return end
 	track.begin = os.clock()
 	
-	local i, span = 1, #a.animations
-	while span > 1 do
-		span = math.floor((span + 1) * 0.5)
-			
-		local desired = i + span
-		if desired <= #a.animations and a.animations[desired].priority <= track.priority then
-			i = desired
-		end
-	end
-		
-	table.insert(a.animations, i, track)
+	table.insert(a.animations, track)
+	table.sort(a.animations, function(b, c) return b.priority < c.priority end)
 end
 
 function Animator.stepTrack(a, track)
@@ -219,13 +210,13 @@ end
 
 function Animator.update(a)
 	local removeList = {}
-	for i = #a.animations, 1, -1 do
+	for i = 1, #a.animations do
 		if Animator.stepTrack(a, a.animations[i]) then
 			table.insert(removeList, i)
 		end
 	end
 	
-	for i = 1, #removeList do
+	for i = #removeList, 1, -1 do
 		table.remove(a.animations, removeList[i])
 	end
 	
