@@ -2,7 +2,6 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 local Players = game:GetService("Players")
 
--- enter your stuff here
 local Animations = ReplicatedStorage:WaitForChild("animations")
 local Animator = require(script.Parent.Animator)
 
@@ -73,6 +72,7 @@ end
 
 -- Local player stuff
 function Replicator.localPlayTrack(name, fadeIn)
+	Animations:WaitForChild(name)
 	Replicate:FireServer(0, name, fadeIn)
 	Replicator.replicate(assert(Players.LocalPlayer).Character, 0, name, fadeIn)
 end
