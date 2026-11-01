@@ -1,6 +1,14 @@
 # retro-animator
 old animation system i guess
 
+## usage
+copy and paste Exporter.luau into your script console, and highlight the keyframe sequences you want to exort
+afterwards, you should have module scripts to paste into...
+
+## replicator usage
+make a folder in replicatedstorage named "animations" (although, you could rename the path whenever in the Replicator module)
+put the module script in the animations folder so the replicator can view it
+
 ## initialization
 ```lua
 -- Some server script to initialize the replication system
