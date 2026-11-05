@@ -16,6 +16,12 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 require(ReplicatedStorage:WaitForChild("Replicator"))
 ```
 
+```lua
+-- Some client script in replicated first to make sure the replicator is alive
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+require(ReplicatedStorage:WaitForChild("Replicator"))
+```
+
 ## animate example
 ```lua
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
